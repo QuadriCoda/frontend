@@ -13,7 +13,7 @@ spec:
         app: {{ include "scrapper-admin-frontend.fullname" . }}
     spec:
       imagePullSecrets:
-      - name: ecr-registry
+        - name: ecr-registry
       containers:
         - name: scrapper-admin-frontend
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
