@@ -1,0 +1,13 @@
+{
+    "name": "quadricoda",
+    "main": "index.ts",
+    "devDependencies": {
+        "@types/node": "^16"
+    },
+    "dependencies": {
+        "@pulumi/aws": "^6.9.0",
+        "@pulumi/eks": "^2.0.0",
+        "@pulumi/kubernetes": "^4.5.4",
+        "@pulumi/pulumi": "^3.0.0"
+    }
+}
