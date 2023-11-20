@@ -30,7 +30,8 @@ jobs:
         uses: pulumi/actions@v3
         with:
           command: up
-          stack-name: dangg/scrapper-frontend-admin/dev  # Replace with your Pulumi stack name
+          stack-name: dangg/scrapper-frontend-admin/dev
+          working-directory: ./pulumi
         env:
           PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
           KUBECONFIG: ${{ github.workspace }}/decoded-kubeconfig
