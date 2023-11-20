@@ -1,0 +1,38 @@
+name: Deploy to Minikube via ngrok
+
+on:
+  push:
+    branches:
+      - main  # Set this to the branch you want to deploy from
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'  # Set this to the node version you are using
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Pulumi CLI
+        uses: pulumi/action-install-pulumi-cli@v1
+
+      - name: Decode kubeconfig from base64
+        run: echo "${{ secrets.MINIKUBE_KUBECONFIG }}" | base64 -d > decoded-kubeconfig
+
+      - name: Run Pulumi up
+        uses: pulumi/actions@v3
+        with:
+          command: up
+          stack-name: dev  # Replace with your Pulumi stack name
+        env:
+          PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+          KUBECONFIG: ${{ github.workspace }}/decoded-kubeconfig
+          GITHUB_SHA: ${{ github.sha }}
+          # Any other environment variables your Pulumi program might need

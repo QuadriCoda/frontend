@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "scrapper-admin-frontend.fullname" . }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "scrapper-admin-frontend.fullname" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "scrapper-admin-frontend.fullname" . }}
+    spec:
+      containers:
+        - name: scrapper-admin-frontend
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: 80
+          resources: {}

@@ -1,0 +1,6 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scrapper-admin-frontend
+spec:
+  replicas: 3 # Development might have a different replica count

@@ -1,0 +1,6 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scrapper-admin-frontend
+spec:
+  # This is a placeholder. The actual deployment spec will be defined by Helm.
