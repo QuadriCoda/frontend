@@ -26,6 +26,10 @@ jobs:
       - name: Decode kubeconfig from base64
         run: echo "${{ secrets.MINIKUBE_KUBECONFIG }}" | base64 -d > decoded-kubeconfig
 
+      - name: Install dependencies
+        working-directory: ./pulumi
+        run: npm install
+
       - name: Run Pulumi up
         uses: pulumi/actions@v3
         with:
