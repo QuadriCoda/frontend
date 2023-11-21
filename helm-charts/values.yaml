@@ -9,7 +9,7 @@ service:
   port: 30000
 
 ingress:
-  enabled: false
+  enabled: true
   annotations: {}
   hosts:
     - host: scrapper-admin-frontend.local
