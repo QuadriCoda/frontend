@@ -5,7 +5,7 @@ image:
   tag: "latest"
 
 service:
-  type: nodePort
+  type: NodePort
   port: 30000
 
 ingress:
