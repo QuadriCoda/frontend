@@ -5,7 +5,7 @@ image:
   tag: "latest"
 
 service:
-  type: LoadBalancer
+  type: nodePort
   port: 30000
 
 ingress:
